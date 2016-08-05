@@ -35,6 +35,7 @@ var orm = {
       cb(result);
     });
   },
+  
   insertOne: function(table, cols, vals, cb){
     var queryString = 'INSERT INTO ' + table + ' (' + cols.toString() + ') VALUES (' + printQuestionMarks(vals.length) + ');';
   
@@ -42,9 +43,10 @@ var orm = {
 
     connection.query(queryString, vals, function(err, result){
       if (err) throw err;
-      cd(result);
+      cb(result);
     });
   },
+  
   updateOne: function (table, objColVals, condition, cb) {
     var queryString = 'UPDATE ' + table;
 
